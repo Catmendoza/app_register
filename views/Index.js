@@ -7,8 +7,10 @@ import {
   ScrollView,
   TouchableHighlight,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
 import style from '../styles/indexStyle';
+
 const Index = () => {
   const navigation = useNavigation();
 
@@ -22,9 +24,16 @@ const Index = () => {
     return date + '-' + month + '-' + year; //format: dd-mm-yyyy;
   };
 
+  const cerrarSesion = async () => {
+    await auth().signOut();
+  };
+
   return (
     <View style={style.container}>
-      <View style={{flexDirection: 'row', marginTop: 10}}>
+      <TouchableHighlight onPress={cerrarSesion}>
+        <Text>sds</Text>
+      </TouchableHighlight>
+      <View style={{ flexDirection: 'row', marginTop: 10 }}>
         <Text style={style.textoTitulo}>Oct 26</Text>
         <TextInput
           style={{
@@ -45,7 +54,7 @@ const Index = () => {
           marginTop: 10,
           borderRadius: 20,
         }}>
-        <Text style={{marginTop: 200, marginLeft: 10}}>Evento día lunes</Text>
+        <Text style={{ marginTop: 200, marginLeft: 10 }}>Evento día lunes</Text>
       </View>
 
       <View>
@@ -63,7 +72,7 @@ const Index = () => {
             }}>
             <Image
               source={require('../img/img2.jpeg')}
-              style={{width: 80, height: 80, marginTop: 10, marginLeft: 20}}
+              style={{ width: 80, height: 80, marginTop: 10, marginLeft: 20 }}
             />
           </TouchableHighlight>
 
@@ -79,7 +88,7 @@ const Index = () => {
             }}>
             <Image
               source={require('../img/img3.jpeg')}
-              style={{width: 80, height: 80, marginTop: 10, marginLeft: 20}}
+              style={{ width: 80, height: 80, marginTop: 10, marginLeft: 20 }}
             />
           </TouchableHighlight>
         </ScrollView>

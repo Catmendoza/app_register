@@ -15,7 +15,7 @@ const Welcome = () => {
         style={style.boton}
         underlayColor="no"
         onPress={() => navigation.navigate('Login')}>
-        <Text style={style.textoBoton}>Inicia sesión</Text>
+        <Text style={style.textoBoton}>Iniciar sesión</Text>
       </TouchableHighlight>
     </View>
   );

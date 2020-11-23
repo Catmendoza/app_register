@@ -41,7 +41,7 @@ const Welcome = () => {
         <TouchableHighlight
           style={style.botonSingUp}
           underlayColor="no"
-          onPress={() => navigation.navigate('Login')}>
+          onPress={() => navigation.navigate('Register')}>
           <Text style={style.textoBoton}>Registrarme</Text>
         </TouchableHighlight>
         <View style={style.transBotonSingUp1}></View>

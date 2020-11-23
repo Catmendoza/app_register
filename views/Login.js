@@ -7,7 +7,6 @@ import {
   TextInput,
   KeyboardAvoidingView,
   TouchableOpacity,
-  Button,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import auth, { firebase } from '@react-native-firebase/auth';

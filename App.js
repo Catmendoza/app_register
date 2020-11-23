@@ -11,6 +11,7 @@ import Index from './views/Index';
 import Qr from './views/Qr';
 import ForgotPassword from './views/ForgotPassword';
 import Register from './views/Register';
+import Profile from './views/Profile';
 
 const App = () => {
   const [initializing, setInitializing] = useState(true);
@@ -74,6 +75,11 @@ const App = () => {
           <Drawer.Screen
             name="Qr"
             component={Qr}
+            options={{ headerShown: false }}
+          />
+          <Drawer.Screen
+            name="Profile"
+            component={Profile}
             options={{ headerShown: false }}
           />
         </Drawer.Navigator>

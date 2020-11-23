@@ -1,10 +1,10 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: '#0b4f7e',
     flex: 1,
-    alignItems: 'center',
+    backgroundColor: 'white',
+    padding: 10,
   },
   textoTitulo: {
     color: 'black',
@@ -38,5 +38,34 @@ export default StyleSheet.create({
   },
   buttonTouchable: {
     padding: 16,
+  },
+
+  titleText: {
+    fontSize: 22,
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
+  textStyle: {
+    color: 'black',
+    fontSize: 16,
+    textAlign: 'center',
+    padding: 10,
+    marginTop: 16,
+  },
+  buttonStyle: {
+    fontSize: 16,
+    color: 'white',
+    backgroundColor: 'green',
+    padding: 5,
+    minWidth: 250,
+  },
+  buttonTextStyle: {
+    padding: 5,
+    color: 'white',
+    textAlign: 'center',
+  },
+  textLinkStyle: {
+    color: 'blue',
+    paddingVertical: 20,
   },
 });

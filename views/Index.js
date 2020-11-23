@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -14,6 +14,11 @@ import style from '../styles/indexStyle';
 
 const Index = () => {
   const navigation = useNavigation();
+
+  useEffect(
+    () => navigation.addListener('beforeRemove', (e) => e.preventDefault()),
+    [navigation],
+  );
 
   const getCurrentDate = () => {
     var date = new Date().getDate();

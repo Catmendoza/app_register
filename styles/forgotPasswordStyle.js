@@ -2,42 +2,31 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: '#e3e1e7',
+    backgroundColor: '#0b4f7e',
     flex: 1,
+    justifyContent: 'center',
   },
   textoTitulo: {
     color: 'white',
-    fontSize: 30,
+    fontSize: 20,
     top: 20,
     fontWeight: 'bold',
-  },
-  cuadroLogin: {
-    backgroundColor: '#0b4f7e',
-    width: '100%',
-    height: '75%',
-    marginTop: '5%',
-    borderTopLeftRadius: 50,
-    borderTopRightRadius: 50,
-    alignItems: 'center',
+    textAlign: 'center',
   },
   textInput: {
     width: '80%',
     backgroundColor: 'white',
     borderRadius: 15,
     marginTop: '15%',
-  },
-  textInputPassword: {
-    width: '80%',
-    backgroundColor: 'white',
-    borderRadius: 15,
-    marginTop: '10%',
+    alignSelf: 'center',
   },
   boton: {
     width: '80%',
     height: 50,
     backgroundColor: '#d8c7ce',
     borderRadius: 15,
-    marginTop: '8%',
+    marginTop: '10%',
+    alignSelf: 'center',
   },
   textoBoton: {
     color: '#0b4f7e',
@@ -45,10 +34,5 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginTop: 12,
     fontWeight: 'bold',
-  },
-  textoPassword: {
-    fontSize: 15,
-    textAlign: 'right',
-    color: 'white',
   },
 });

@@ -6,6 +6,7 @@ import {
   Image,
   ScrollView,
   TouchableHighlight,
+  TouchableOpacity,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
@@ -30,9 +31,15 @@ const Index = () => {
 
   return (
     <View style={style.container}>
-      <TouchableHighlight onPress={cerrarSesion}>
-        <Text>sds</Text>
-      </TouchableHighlight>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        onPress={cerrarSesion}
+        style={style.touchableOpacityStyle}>
+        <Image
+          source={require('../img/sign_out.png')}
+          style={style.floatingButtonStyle}
+        />
+      </TouchableOpacity>
       <View style={{ flexDirection: 'row', marginTop: 10 }}>
         <Text style={style.textoTitulo}>Oct 26</Text>
         <TextInput

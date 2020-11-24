@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+const { width, height } = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
@@ -13,15 +14,15 @@ export default StyleSheet.create({
     textAlign: 'center',
   },
   img: {
-    width: 300,
-    height: 200,
+    width: width * 0.7,
+    height: height * 0.3,
     position: 'absolute',
-    top: 300,
-    left: -70,
+    top: height * 0.6,
+    left: width * -0.15,
   },
   boton: {
-    width: 200,
-    height: 60,
+    width: width * 0.6,
+    height: height * 0.113,
     backgroundColor: '#d8c7ce',
     //borderRadius: 12,
     borderTopRightRadius: 12,
@@ -34,7 +35,7 @@ export default StyleSheet.create({
   transBoton1: {
     backgroundColor: '#0b4f7e',
     borderBottomLeftRadius: 40,
-    width: '75%',
+    width: width * 0.75,
     height: 50,
     top: -35,
     left: -15,
@@ -43,15 +44,15 @@ export default StyleSheet.create({
   transBoton2: {
     backgroundColor: '#0b4f7e',
     borderTopLeftRadius: 40,
-    width: '75%',
+    width: width * 0.75,
     height: 50,
     top: 75,
     left: -15,
     position: 'absolute',
   },
   botonSingUp: {
-    width: 200,
-    height: 60,
+    width: width * 0.6,
+    height: height * 0.113,
     backgroundColor: '#d4ebec',
     //borderRadius: 12,
     borderTopLeftRadius: 12,
@@ -91,11 +92,11 @@ export default StyleSheet.create({
     color: 'white',
     fontSize: 20,
     textAlign: 'center',
-    marginTop: 150,
+    marginTop: height * 0.2,
   },
   logo: {
-    width: 350,
-    height: 150,
+    width: width * 0.7,
+    height: height * 0.3,
     alignSelf: 'center',
   },
 });

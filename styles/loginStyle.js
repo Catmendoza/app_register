@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+const { width, height } = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
@@ -7,37 +8,43 @@ export default StyleSheet.create({
   },
   textoTitulo: {
     color: 'white',
-    fontSize: 30,
+    fontSize: 20,
     top: 20,
     fontWeight: 'bold',
   },
+  flecha: {
+    width: width * 0.09,
+    height: height * 0.05,
+    marginTop: width * 0.02,
+    marginLeft: 10,
+  },
   cuadroLogin: {
     backgroundColor: '#0b4f7e',
-    width: '100%',
-    height: '75%',
-    marginTop: '5%',
+    width: width * 1,
+    height: height * 0.75,
+    marginTop: height * 0.05,
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
     alignItems: 'center',
   },
   textInput: {
-    width: '80%',
+    width: width * 0.8,
     backgroundColor: 'white',
     borderRadius: 15,
-    marginTop: '15%',
+    marginTop: height * 0.06,
   },
   textInputPassword: {
-    width: '80%',
+    width: width * 0.8,
     backgroundColor: 'white',
     borderRadius: 15,
-    marginTop: '10%',
+    marginTop: height * 0.04,
   },
   boton: {
-    width: '80%',
+    width: width * 0.8,
     height: 50,
     backgroundColor: '#d8c7ce',
     borderRadius: 15,
-    marginTop: '8%',
+    marginTop: height * 0.04,
   },
   textoBoton: {
     color: '#0b4f7e',
@@ -47,7 +54,7 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   },
   textoPassword: {
-    fontSize: 15,
+    fontSize: 12,
     textAlign: 'right',
     color: 'white',
   },

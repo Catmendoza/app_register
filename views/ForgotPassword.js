@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import auth, { firebase } from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
+import { Icon } from 'react-native-elements';
 import style from '../styles/forgotPasswordStyle';
 
 const ForgotPassword = () => {
@@ -40,15 +41,26 @@ const ForgotPassword = () => {
 
   return (
     <View style={style.container}>
-      <TouchableOpacity
-        activeOpacity={0.7}
-        onPress={() => navigation.navigate('Login')}>
-        <Image
-          source={require('../img/flecharosa.png')}
-          style={{ marginLeft: 10 }}
-        />
-      </TouchableOpacity>
-      <Text style={style.textoTitulo}>Ingresa tu correo:</Text>
+      <Icon
+        name="chevron-left"
+        color="#aaf1ff"
+        size={35}
+        containerStyle={{ alignSelf: 'flex-start' }}
+        onPress={() => navigation.goBack()}
+      />
+      <View style={{ flexDirection: 'column' }}>
+        <Text style={style.textoTitulo}>Ingresa tu correo:</Text>
+        <Text
+          style={{
+            fontSize: 12,
+            color: 'white',
+            marginTop: 4,
+            marginLeft: 10,
+          }}>
+          Te enviaremos al correo un enlace donde puedes cambiar tu contraseña.
+        </Text>
+      </View>
+
       <TextInput
         placeholder="Correo"
         keyboardType="email-address"

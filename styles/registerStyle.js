@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+const { width, height } = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
@@ -7,29 +8,29 @@ export default StyleSheet.create({
   },
   textoTitulo: {
     color: '#0b4f7e',
-    fontSize: 25,
-    top: 15,
+    fontSize: 20,
+    top: height * 0.01,
     fontWeight: 'bold',
   },
   cuadroLogin: {
     backgroundColor: '#e3e1e7',
-    width: '100%',
-    height: '95%',
+    width: width * 1,
+    height: height * 0.95,
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
     alignItems: 'center',
   },
   textInput: {
-    width: '80%',
+    width: width * 0.8,
     backgroundColor: 'white',
     borderRadius: 15,
-    marginTop: '5%',
+    marginTop: height * 0.02,
   },
   textInputPassword: {
-    width: '80%',
+    width: width * 0.8,
     backgroundColor: 'white',
     borderRadius: 15,
-    marginTop: '5%',
+    marginTop: height * 0.02,
   },
   boton: {
     width: '80%',
@@ -42,7 +43,7 @@ export default StyleSheet.create({
     color: 'white',
     fontSize: 20,
     textAlign: 'center',
-    marginTop: 12,
+    marginTop: height * 0.02,
     fontWeight: 'bold',
   },
   textoPassword: {

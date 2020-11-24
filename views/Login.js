@@ -7,9 +7,11 @@ import {
   TextInput,
   KeyboardAvoidingView,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import auth, { firebase } from '@react-native-firebase/auth';
+import { Icon } from 'react-native-elements';
 import style from '../styles/loginStyle';
 
 //HOOKS
@@ -42,25 +44,26 @@ const Login = () => {
   };
 
   return (
-    <View style={style.container}>
-      <TouchableOpacity
-        activeOpacity={0.7}
-        onPress={() => navigation.navigate('Welcome')}>
-        <Image
-          source={require('../img/flecha-izquierda.png')}
-          style={{ marginTop: 5, marginLeft: 10 }}
-        />
-      </TouchableOpacity>
+    <KeyboardAvoidingView
+      style={style.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <Icon
+        name="chevron-left"
+        color="#0b4f7e"
+        size={35}
+        containerStyle={{ alignSelf: 'flex-start' }}
+        onPress={() => navigation.goBack()}
+      />
       <Image
         source={require('../img/logoGrande.png')}
         style={{ width: 250, height: 150, alignSelf: 'center' }}
       />
-      <KeyboardAvoidingView style={style.cuadroLogin} behavior="padding">
+      <View style={style.cuadroLogin}>
         <Text style={style.textoTitulo}>Iniciar sesión</Text>
         <TextInput
           placeholder="Correo"
           keyboardType="email-address"
-          placeholderTextColor="black"
+          placeholderTextColor="#0b4f7e"
           style={style.textInput}
           value={correo}
           onChangeText={(e) => setCorreo(e)}
@@ -85,8 +88,8 @@ const Login = () => {
           onPress={validacion}>
           <Text style={style.textoBoton}>Iniciar</Text>
         </TouchableHighlight>
-      </KeyboardAvoidingView>
-    </View>
+      </View>
+    </KeyboardAvoidingView>
   );
 };
 

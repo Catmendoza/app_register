@@ -6,14 +6,13 @@ import {
   Text,
   TextInput,
   KeyboardAvoidingView,
-  TouchableOpacity,
-  Button,
   Alert,
   ActivityIndicator,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import auth, { firebase } from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import { Icon } from 'react-native-elements';
 import style from '../styles/registerStyle';
 
 //HOOKS
@@ -87,37 +86,32 @@ const Register = () => {
   }*/
   return (
     <View style={style.container}>
-      <TouchableOpacity
-        activeOpacity={0.7}
-        onPress={() => navigation.navigate('Welcome')}>
-        <Image
-          source={require('../img/flecharosa.png')}
-          style={{ marginTop: 5, marginLeft: 10 }}
-        />
-      </TouchableOpacity>
-      <Image
-        source={require('../img/logoBlancoLargo.png')}
-        style={{ width: 200, height: 10, alignSelf: 'center' }}
+      <Icon
+        name="chevron-left"
+        color="#d8c7ce"
+        size={35}
+        containerStyle={{ alignSelf: 'flex-start' }}
+        onPress={() => navigation.goBack()}
       />
       <KeyboardAvoidingView style={style.cuadroLogin} behavior="padding">
         <Text style={style.textoTitulo}>Crear cuenta</Text>
         <TextInput
           placeholder="Nombres"
-          placeholderTextColor="black"
+          placeholderTextColor="#0b4f7e"
           style={style.textInput}
           value={nombre}
           onChangeText={(e) => setNombre(e)}
         />
         <TextInput
           placeholder="Apellidos"
-          placeholderTextColor="black"
+          placeholderTextColor="#0b4f7e"
           style={style.textInput}
           value={apellido}
           onChangeText={(e) => setApellido(e)}
         />
         <TextInput
           placeholder="Cedula"
-          placeholderTextColor="black"
+          placeholderTextColor="#0b4f7e"
           style={style.textInput}
           value={cedula}
           onChangeText={(e) => setCedula(e)}
@@ -125,7 +119,7 @@ const Register = () => {
         <TextInput
           placeholder="Correo"
           keyboardType="email-address"
-          placeholderTextColor="black"
+          placeholderTextColor="#0b4f7e"
           style={style.textInput}
           value={correo}
           onChangeText={(e) => setCorreo(e)}
@@ -139,7 +133,7 @@ const Register = () => {
           onChangeText={(e) => setContrasenia(e)}
         />
         <TextInput
-          placeholder="Contraseña"
+          placeholder="Verifique contraseña"
           secureTextEntry={true}
           placeholderTextColor="#0b4f7e"
           style={style.textInputPassword}

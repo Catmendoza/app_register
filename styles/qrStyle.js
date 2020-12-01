@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+const { width, height } = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
@@ -67,5 +68,12 @@ export default StyleSheet.create({
   textLinkStyle: {
     color: 'blue',
     paddingVertical: 20,
+  },
+  img: {
+    width: width * 0.7,
+    height: height * 0.3,
+    position: 'absolute',
+    top: 70,
+    left: 25,
   },
 });

@@ -1,35 +1,84 @@
 import React, { useState } from 'react';
 import {
-  SafeAreaView,
+  Image,
   Text,
   View,
   Linking,
   TouchableHighlight,
   PermissionsAndroid,
   Platform,
+  Alert,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { CameraKitCameraScreen } from 'react-native-camera-kit';
-
+import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
+import { Icon } from 'react-native-elements';
 import style from '../styles/qrStyle';
 
 const Qr = () => {
   const [qrvalue, setQrvalue] = useState('');
   const [opneScanner, setOpneScanner] = useState(false);
 
+  const navigation = useNavigation();
+
   const onOpenlink = () => {
-    // If scanned then function to open URL in Browser
     Linking.openURL(qrvalue);
   };
 
-  const onBarcodeScan = (qrvalue) => {
-    // Called after te successful scanning of QRCode/Barcode
-    setQrvalue(qrvalue);
-    setOpneScanner(false);
+  const registrar = async () => {
+    await firestore()
+      .collection('Asistencia')
+      .add({
+        hora_registro: new Date(),
+        idUSuario: auth().currentUser.uid,
+        idEvento: qrvalue,
+      })
+      .then(() => Alert.alert('Registrado'));
+  };
+
+  const onBarcodeScan = async (qrvalue) => {
+    const data = await firestore().collection('Asistencia').get();
+
+    const eventos = data.docs;
+
+    let registrado = false;
+
+    for (let i = 0; i < eventos.length; i++) {
+      if (
+        eventos[i].data().idEvento === qrvalue &&
+        eventos[i].data().idUsuario === auth().currentUser.uid
+      ) {
+        setOpneScanner(false);
+
+        Alert.alert(
+          'Regresar',
+          '¿Estas seguro de que no estas registrado?',
+          [
+            {
+              text: 'Reintentar',
+              onPress: () => setOpneScanner(true),
+              style: 'cancel',
+            },
+            {
+              text: 'Salir',
+              onPress: () => navigation.goBack(),
+            },
+          ],
+          { cancelable: false },
+        );
+
+        registrado = true;
+      }
+    }
+
+    if (!registrado) {
+      setQrvalue(qrvalue);
+      setOpneScanner(false);
+    }
   };
 
   const onOpneScanner = () => {
-    // To Start Scanning
     if (Platform.OS === 'android') {
       async function requestCameraPermission() {
         try {
@@ -41,7 +90,6 @@ const Qr = () => {
             },
           );
           if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-            // If CAMERA Permission is granted
             setQrvalue('');
             setOpneScanner(true);
           } else {
@@ -52,7 +100,7 @@ const Qr = () => {
           console.warn(err);
         }
       }
-      // Calling the camera permission function
+
       requestCameraPermission();
     } else {
       setQrvalue('');
@@ -62,20 +110,21 @@ const Qr = () => {
 
   return (
     <View style={style.container}>
+      <Icon
+        name="chevron-left"
+        color="#0b4f7e"
+        size={35}
+        containerStyle={{ alignSelf: 'flex-start' }}
+        onPress={() => navigation.goBack()}
+      />
       {opneScanner ? (
         <View style={{ flex: 1, width: 200, height: 200 }}>
           <CameraKitCameraScreen
             showFrame={false}
-            // Show/hide scan frame
             scanBarcode={true}
-            // Can restrict for the QR Code only
             laserColor={'blue'}
-            // Color can be of your choice
             frameColor={'yellow'}
-            // If frame is visible then frame color
             colorForScannerFrame={'black'}
-            // Scanner Frame color
-
             onReadCode={(event) =>
               onBarcodeScan(event.nativeEvent.codeStringValue)
             }
@@ -83,9 +132,8 @@ const Qr = () => {
         </View>
       ) : (
         <View style={style.container}>
-          <Text style={style.titleText}>
-            Escáner de código de barras y código QR usando la cámara en React
-            Native
+          <Text style={style.textoTitulo}>
+            Escanea el QR del evento al que quieres asistir
           </Text>
           <Text style={style.textStyle}>
             {qrvalue ? 'Scanned Result: ' + qrvalue : ''}
@@ -99,22 +147,21 @@ const Qr = () => {
               </Text>
             </TouchableHighlight>
           ) : null}
-          <TouchableHighlight onPress={onOpneScanner} style={style.buttonStyle}>
-            <Text style={style.buttonTextStyle}>Open QR Scanner</Text>
-          </TouchableHighlight>
+          <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
+            <TouchableHighlight
+              onPress={onOpneScanner}
+              style={{ width: 100, backgroundColor: '#0b4f7e', margin: 20 }}>
+              <Text style={style.buttonTextStyle}>Abrir lector</Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+              onPress={registrar}
+              style={{ width: 100, backgroundColor: '#0b4f7e', margin: 20 }}>
+              <Text style={style.buttonTextStyle}>Registrar</Text>
+            </TouchableHighlight>
+            <Image source={require('../img/persona.png')} style={style.img} />
+          </View>
         </View>
       )}
-      {/*<View
-        style={{
-          backgroundColor: 'white',
-          width: '100%',
-          height: '50%',
-          top: '50%',
-          borderTopLeftRadius: 50,
-          borderTopRightRadius: 50,
-        }}>
-        <Text style={style.textoTitulo}>Evento</Text>
-      </View>*/}
     </View>
   );
 };

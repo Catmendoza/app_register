@@ -25,6 +25,7 @@ export default StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 15,
     marginTop: height * 0.02,
+    color: '#0b4f7e',
   },
   textInputPassword: {
     width: width * 0.8,

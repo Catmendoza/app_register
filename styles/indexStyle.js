@@ -7,11 +7,13 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   textoTitulo: {
-    color: 'black',
-    fontSize: 20,
+    color: '#0b4f7e',
+    fontSize: 30,
     marginRight: 10,
-    marginTop: 5,
+    marginTop: 35,
     marginBottom: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   touchableOpacityStyle: {
     position: 'absolute',
@@ -27,5 +29,39 @@ export default StyleSheet.create({
     width: 50,
     height: 50,
     //backgroundColor:'black'
+  },
+
+  item: {
+    color: 'white',
+
+    backgroundColor: '#00000060',
+    borderRadius: 10,
+    marginTop: 50,
+    width: '100%',
+    height: '40%',
+  },
+
+  separator: {
+    width: 10,
+  },
+  itemContorno: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    marginLeft: 10,
+    width: 200,
+    height: 120,
+  },
+  imagenItem: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    alignSelf: 'center',
+    borderRadius: 10,
+  },
+  textoPorcentaje: {
+    fontSize: 50,
+    textAlign: 'center',
+    color: 'white',
+    marginTop: 40,
   },
 });
